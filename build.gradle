@@ -1,0 +1,31 @@
+plugins {
+    id "java-library"
+}
+
+java.toolchain {
+    languageVersion = JavaLanguageVersion.of(17)
+}
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+
+dependencies {
+    implementation "org.jetbrains:annotations:20.1.0"
+    implementation "net.sf.jopt-simple:jopt-simple:5.0.4"
+}
+
+tasks.register("generateFabric", JavaExec) {
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = "org.commonmc.tags.Main"
+    args "--backend", "fabric", "--folder", "../fabric"
+    outputs.upToDateWhen { false }
+}
+
+tasks.register("generateNeoForge", JavaExec) {
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = "org.commonmc.tags.Main"
+    args "--backend", "neoforge", "--folder", "../NeoForge"
+    outputs.upToDateWhen { false }
+}

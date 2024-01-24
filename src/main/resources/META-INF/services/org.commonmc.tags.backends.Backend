@@ -1,0 +1,2 @@
+org.commonmc.tags.backends.fabric.FabricBackend
+org.commonmc.tags.backends.neoforge.NeoForgeBackend
